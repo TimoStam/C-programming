@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 int main(){
-    printf("%d, getal");
+    if (getal > 10){
+        printf("%d, getal");
+    }
 }
 
 int getal = 10;
