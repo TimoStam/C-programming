@@ -9,7 +9,7 @@ int main() {
     int input = 0;
 
     const char *fuels[] = {"benzine", "diesel", "LPG", "kerosine"};
-    int num_fuels = 4;
+    int fuelAmount = 4;
 
     while (!input) {
         printf("Stuur een key en een value die gesplitst zijn door een ':': ");
@@ -25,7 +25,7 @@ int main() {
             if (sscanf(buffer, "%[^:]: %s", key, value) == 2) {
                 if (strcmp(key, "Brandstof") == 0) {
                     int valid = 0;
-                    for (int i = 0; i < num_fuels; i++) {
+                    for (int i = 0; i < fuelAmount; i++) {
                         if (strcmp(value, fuels[i]) == 0) {
                             valid = 1;
                             break;
