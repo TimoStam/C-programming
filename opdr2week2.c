@@ -17,7 +17,7 @@ void copyString(char *source, char *dest, int sourceSize, int destSize){
 
 int main(){
     char sourceArr[] = "Hello, World!";
-    char destArr[10];
+    char destArr[20];
     copyString(sourceArr, destArr, sizeof(sourceArr), sizeof(destArr));
     printf("%s\n", destArr);
     return 0;
