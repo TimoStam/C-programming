@@ -1,9 +1,10 @@
 #include <stdio.h>
 
+int j = 0;
 int main(){
-    if (getal > 10){
-        printf("%d, getal");
+    for (int i =0; i<4; i++){
+        for (int i =0; i<4; i++){
+            j++;
+        }
     }
 }
-
-int getal = 10;
