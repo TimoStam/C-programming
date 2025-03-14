@@ -28,9 +28,13 @@ int main(){
         scanf(" %9[^\n]", team[i].education);
     }
 
+    printf("Which education: ");
+    scanf(" %9[^\n]", edu);
     for (int i = 0; i < memberCount; i++){
-        printf("Name: %s ", team[i].name);
-        printf("Id: %d ", team[i].id);
-        printf("Education: %s\n", team[i].education);
+        if (strcmp(edu, team[i].education) == 0){
+            printf("Name: %s ", team[i].name);
+            printf("Id: %d ", team[i].id);
+            printf("Education: %s\n", team[i].education);
+        }
     }
 }
