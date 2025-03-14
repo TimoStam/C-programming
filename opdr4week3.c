@@ -8,6 +8,10 @@ struct teamlid {
     char education[10];
 };
 
+int generationId(){
+    static int id = 1000;
+    return id++;
+}
 
 int main(){
     struct teamlid *team;
@@ -21,7 +25,7 @@ int main(){
         return 1;
     }
     for (int i = 0; i < memberCount; i++){
-        team[i].id = i + 1;
+        team[i].id = generationId();
         printf("Player name: ");
         scanf(" %19[^\n]", team[i].name);
         printf("Player education: ");
@@ -37,4 +41,6 @@ int main(){
             printf("Education: %s\n", team[i].education);
         }
     }
+    free(team);
+    return 0;
 }
