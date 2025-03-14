@@ -33,7 +33,7 @@ int main(){
     int courses = sizeof(vakken)/sizeof(vakken[0]);
 
     for (int i = 0; i<courses-1; i++){
-        printf("%s, ", vakken[i].naam);
+        printf("%s ECTS: %d, ", vakken[i].naam, vakken[i].ECTS);
     }
     printf("%s\n", vakken[courses-1].naam);
     fflush(stdout);

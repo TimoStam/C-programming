@@ -10,8 +10,8 @@ void printArray(double* numberArr, int size){
 
 
 int main(){
-    double numbers1[] = {5.89, 6.20, -2.13};
-    // double numbers2[] = {3.14};
-    printArray(numbers1, (sizeof(numbers1)/sizeof(double)));
+    // double numbers1[] = {5.89, 6.20, -2.13};
+    double numbers2[] = {3.14};
+    printArray(numbers2, (sizeof(numbers2)/sizeof(double)));
     
 }
