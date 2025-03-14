@@ -2,31 +2,19 @@
 #include <stdlib.h>
 #include <time.h>
 
-void generateArray(int low, int high, int size){
+void generateArray(int low, int high, int size, int* p1, int* p2){
     srand(time(NULL));
-    int r = 0;
-    int *p1 = malloc(size * sizeof *p1);
-    int *p2 = malloc(size * sizeof *p2);
-
-    if (p1 == NULL){
-        printf("Failed to allocate memory");
-        return;
-    }
-
-    if (p2 == NULL){
-        printf("Failed to allocate memory");
-        return;
-    }
 
     for (int i = 0; i < size; i++){
-        r = rand() % (high - low + 1) + low;
-        p1[i] = r;
+        p1[i] = rand() % (high - low + 1) + low;
     }
+    
+    for (int i = 0; i< size; i++){
+        p2[i] = rand() % (high - low + 1) + low;
+    }
+}
 
-    for (int i = 0; i < size; i++){
-        r = rand() % (high - low + 1) + low;
-        p2[i] = r;
-    }
+void printArray(int size, int* p1, int* p2){
 
     for (int i = 0; i < size; i++){
         printf("%d ", p1[i]);
@@ -37,7 +25,9 @@ void generateArray(int low, int high, int size){
         printf("%d ", p2[i]);
     }
     printf("\n");
+}
 
+void printHighest(int size, int* p1, int* p2){
     for (int i = 0; i < size; i++){
         if (p1[i]>p2[i]){
             printf("index: %d highest number is %d\n",i, p1[i]);
@@ -47,15 +37,21 @@ void generateArray(int low, int high, int size){
             printf("index: %d The values are equal: %d\n",i, p1[i]);
         }
     }
-    printf("\n");
-
-    free(p1);
-    free(p2);
-    return;
 }
 
 int main(){
-    int lower, higher, size;
+    int lower, higher;
+    int size = 0;
+    int *p1 = malloc(size * sizeof *p1);
+    int *p2 = malloc(size * sizeof *p2);
+    if (p1 == NULL || p2 == NULL){
+        printf("Incorrect memory allocation");
+        return 1;
+    }
     scanf("%d %d %d", &lower, &higher, &size);
-    generateArray(lower, higher, size);
+    generateArray(lower, higher, size, p1, p2);
+    printArray(size, p1, p2);
+    printHighest(size, p1, p2);
+    free(p1);
+    free(p2);
 }
