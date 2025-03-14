@@ -32,20 +32,30 @@ void generateArray(int low, int high, int size){
         printf("%d ", p1[i]);
     }
     printf("\n");
+
     for (int i = 0; i < size; i++){
         printf("%d ", p2[i]);
     }
     printf("\n");
-    
+
+    for (int i = 0; i < size; i++){
+        if (p1[i]>p2[i]){
+            printf("index: %d highest number is %d\n",i, p1[i]);
+        } else if (p2[i]>p1[i]){
+            printf("index: %d highest number is %d\n",i, p2[i]);
+        } else {
+            printf("index: %d The values are equal: %d\n",i, p1[i]);
+        }
+    }
+    printf("\n");
+
     free(p1);
     free(p2);
     return;
 }
 
 int main(){
-    int lower = 0;
-    int higher = 0;
-    int size = 0;
+    int lower, higher, size;
     scanf("%d %d %d", &lower, &higher, &size);
     generateArray(lower, higher, size);
 }
