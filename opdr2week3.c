@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void generateArray(int low, int high, int size, int* p1, int* p2){
+void generateArrays(int low, int high, int size, int* p1, int* p2){
     srand(time(NULL));
 
     for (int i = 0; i < size; i++){
@@ -11,8 +11,7 @@ void generateArray(int low, int high, int size, int* p1, int* p2){
     
     for (int i = 0; i< size; i++){
         p2[i] = rand() % (high - low + 1) + low;
-    }
-}
+    
 
 void printArray(int size, int* p1, int* p2){
 
@@ -49,7 +48,7 @@ int main(){
         return 1;
     }
     scanf("%d %d %d", &lower, &higher, &size);
-    generateArray(lower, higher, size, p1, p2);
+    generateArrays(lower, higher, size, p1, p2);
     printArray(size, p1, p2);
     printHighest(size, p1, p2);
     free(p1);
