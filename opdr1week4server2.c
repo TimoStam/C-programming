@@ -75,16 +75,16 @@ int main() {
             WSACleanup();
             return 1;
         }
-
-        iResult = recv(ClientSocket, recvbuf, recvbuflen, 0);
-        if (iResult > 0) {
+    
+        // Keep receiving from the same client
+        while ((iResult = recv(ClientSocket, recvbuf, recvbuflen, 0)) > 0) {
             recvbuf[iResult] = '\0';
             printf("Received: %s\n", recvbuf);
-
+    
             const char* response = "FAN=1200";
             send(ClientSocket, response, (int)strlen(response), 0);
         }
-
+    
         closesocket(ClientSocket);
     }
 

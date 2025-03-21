@@ -3,6 +3,7 @@
 #include <ws2tcpip.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -10,9 +11,14 @@
 #define SERVER_IP "127.0.0.1"
 #define BUFFER_SIZE 512
 
+
 int main() {
     WSADATA wsaData;
     int iResult;
+    const char* message = "TEMP= ";
+    int temp = 20;
+    char buffer2[40];
+    char recvbuf[BUFFER_SIZE];
 
     iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
     if (iResult != 0) {
@@ -57,16 +63,19 @@ int main() {
     }
 
     // Send dummy sensor data
-    const char* message = "TEMP=22";
-    send(ConnectSocket, message, (int)strlen(message), 0);
+    for (int i = 0; i<10; i++){
+        snprintf(buffer2, sizeof(buffer2), "TEMP=%d", temp);
+        send(ConnectSocket, buffer2, sizeof(buffer2), 0);
+        iResult = recv(ConnectSocket, recvbuf, BUFFER_SIZE, 0);
+        if (iResult > 0) {
+            recvbuf[iResult] = '\0';
+            printf("Received from server: %s\n", recvbuf);
+        }
+        Sleep(1000);
+    }
 
     // Receive server response
-    char recvbuf[BUFFER_SIZE];
-    iResult = recv(ConnectSocket, recvbuf, BUFFER_SIZE, 0);
-    if (iResult > 0) {
-        recvbuf[iResult] = '\0';
-        printf("Received from server: %s\n", recvbuf);
-    }
+
 
     closesocket(ConnectSocket);
     WSACleanup();
