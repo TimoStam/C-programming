@@ -1,3 +1,4 @@
+#define _WIN32_WINNT 0x0601 // Windows 7 or higher
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <stdio.h>
@@ -5,6 +6,7 @@
 #pragma comment(lib, "Ws2_32.lib")
 
 #define DEFAULT_PORT "27015"
+
 int main() {
     WSADATA wsaData;
     int iResult;
