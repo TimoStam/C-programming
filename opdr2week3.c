@@ -11,8 +11,8 @@ void generateArrays(int low, int high, int size, int* p1, int* p2){
     
     for (int i = 0; i< size; i++){
         p2[i] = rand() % (high - low + 1) + low;
-    
-
+    }
+}
 void printArray(int size, int* p1, int* p2){
 
     for (int i = 0; i < size; i++){
