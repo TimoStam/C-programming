@@ -1,46 +1,59 @@
 #include <stdio.h>
-void printFile(char content[100], FILE *file, int size){
-    while (fgets(content, size, file)){
-        printf("%s", content);
-    }
-    printf("\n");
-}
 
-void checkSumRow(FILE *file){
-    rewind(file);
-    int numbers[81];
-    char content[100];
-    int count = 0;
-
-    while (fgets(content, sizeof(content), file)){
-        for (int i=0; content[i] != '\0'; i++){
-            if (content[i] >= '0' && content[i] <= '9'){
-                numbers[count++] = content[i] - '0';
-            }
+void fillSudoku(FILE *file, int sudoku[9][9]){
+    for (int row =0; row<9; row++){
+        for (int col = 0; col<9; col++){
+            fscanf(file, "%d", &sudoku[row][col]);
         }
     }
-    int sum = 0;
-    int index = 0;
-    for (int row = 0; row<9; row++){
+}
+
+void printSudoku(int sudoku[9][9]){
+    for (int row =0; row<9; row++){
         for (int col = 0; col<9; col++){
-            sum += numbers[index++];
+            printf("%d ", sudoku[row][col]);
+        }
+        printf("\n");
+    }
+}
+
+void checkSumRow(int sudoku[9][9]){
+    for (int row =0; row<9; row++){
+        int sum = 0;
+        for (int col = 0; col<9; col++){
+            sum += sudoku[row][col];
         }
         if (sum != 45){
-            printf("row %d does not equal 45, it equals %d\n", row, sum);
+            printf("row %d does not add up to 45. it adds up to %d\n", row+1, sum);
         }
-        sum = 0;
     }
-
-
 }
+
+void checkSumCol(int sudoku[9][9]){
+    for (int col =0; col<9; col++){
+        int sum = 0;
+        for (int row = 0; row<9; row++){
+            sum += sudoku[row][col];
+        }
+        if (sum != 45){
+            printf("col %d does not add up to 45. it adds up to %d\n", col+1, sum);
+        }
+    }    
+}
+
 int main (){
-    FILE *file = fopen("C:\\Users\\timos\\Downloads\\sudoku.txt", "r");
-    char filecontent[100];
+    FILE *file = fopen("C:\\Users\\timos\\Documents\\CP\\C-programming\\sudoku.txt", "r");
+    int sudoku[9][9];
     if(file == NULL) {
         printf("Not able to open the file.");
         return 1;
     }
-    printFile(filecontent, file, sizeof(filecontent));
-    checkSumRow(file);
+
+    fillSudoku(file, sudoku);
+    printSudoku(sudoku);
+    checkSumRow(sudoku);
+    checkSumCol(sudoku);
+
+
 fclose(file);
 }
