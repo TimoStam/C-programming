@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 #define SIZE 9
 
 void fillSudoku(FILE *file, int sudoku[9][9]){
@@ -72,7 +71,5 @@ int main (){
     checkSumRow(sudoku);
     checkSumCol(sudoku);
     checkSumSquares(sudoku);
-
-
 fclose(file);
 }
