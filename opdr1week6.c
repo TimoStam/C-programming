@@ -13,9 +13,12 @@ typedef struct {
 
 void main (){
     Course* courses[MAX_COURSES];
+    Course courses1[MAX_COURSES];
+    printf("%d\n", sizeof(courses1));
     for (int i =0; i<MAX_COURSES; i++){
         courses[i] = malloc(sizeof(Course));
     }
+    printf("%d\n", sizeof(courses));
     int courseCount = 0;
     char courseName[20];
     while (courseCount<MAX_COURSES && scanf_s("%19s", courses[courseCount]->name, 20) == 1){
