@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #define MAX_COURSES 10
 
 typedef struct {
@@ -9,13 +12,19 @@ typedef struct {
 
 
 void main (){
-    Course courses[MAX_COURSES];
-    char courseName[20];
+    Course* courses[MAX_COURSES];
+    for (int i =0; i<MAX_COURSES; i++){
+        courses[i] = malloc(sizeof(Course));
+    }
     int courseCount = 0;
-    printf("Enter courses: ");
-    while (courseCount<MAX_COURSES && scanf_s("%19s", courses[courseCount].name) == 1){
-        printf("Entered course: %19s\n", courses[courseCount].name);
+    char courseName[20];
+    while (courseCount<MAX_COURSES && scanf_s("%19s", courses[courseCount]->name, 20) == 1){
+        printf("Entered course: %19s\n", courses[courseCount]->name);
         courseCount++;
     }
+    
 
+    for (int i =0; i<MAX_COURSES; i++){
+        free(courses[i]);
+    }
 }
