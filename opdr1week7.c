@@ -28,6 +28,24 @@ int compareECTS(const void *a, const void *b){
     }
     return 0;
 }
+int compareFailed(const void *a, const void *b){
+    Results *resultA = (Results *)a;
+    Results *resultB = (Results *)b;
+    double passed = 5.5; 
+    int passedA = resultA->grade > passed;
+    int passedB = resultB->grade > passed;
+
+    if (passedA != passedB){
+        return passedA - passedB;
+    }
+    if (resultA->ECTS > resultB->ECTS){
+        return 1;
+    }
+    if (resultA->ECTS < resultB->ECTS){
+        return -1;
+    }
+    return 0;
+}
 
 void main(){
     Results results[] = {
@@ -47,6 +65,15 @@ void main(){
     }
     qsort(results, 4, sizeof(Results), compareECTS);
     printf("Sorted by ECTS count: \n");
+    for(int i =0; i<4; i++){
+        printf("id: %d, course: %s, ECTS: %d, grade: %.1f\n",
+            results[i].id, 
+            results[i].course,
+            results[i].ECTS,
+            results[i].grade);
+    }
+    qsort(results, 4, sizeof(Results), compareFailed);
+    printf("Sorted by failed courses then grade: \n");
     for(int i =0; i<4; i++){
         printf("id: %d, course: %s, ECTS: %d, grade: %.1f\n",
             results[i].id, 
