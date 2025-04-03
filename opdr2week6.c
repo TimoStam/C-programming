@@ -90,6 +90,39 @@ void removeNegatives(node_t **headRef){
     }
 }
 
+void addNodeIndex(node_t **headRef){
+    int index, input, value = 0;
+    do {
+        printf("Where do you want a new node (after index): \n");
+        input = scanf_s("%d", &index);
+        if (input != 1 || index < 0 || index >= END){
+            printf("Try again\n");
+            while (getchar() != '\n');
+        }
+    } while (input != 1 || index < 0 || index >= END);
+    if (*headRef == NULL){
+        return;
+    }
+    node_t *current = *headRef;
+    for (int i =0; i<index; i++){
+        current = current->next;
+    }
+    node_t *newNode = (node_t *) malloc(sizeof(node_t));
+
+    do {
+        printf("New value: \n");
+        input = scanf_s("%d", &value);
+        if (input != 1){
+            printf("Try again\n");
+            while (getchar() != '\n');
+        }
+    } while (input != 1);
+    
+    newNode->data = value;
+    newNode->next = current->next;
+    current->next = newNode;
+}
+
 void createLinkedList(int numbers[], node_t **headRef){
     int count;
     node_t *current = *headRef;
@@ -113,7 +146,7 @@ void createLinkedList(int numbers[], node_t **headRef){
 void main(){
     node_t *head = NULL;
 
-    int numbers[END] = {-1,-2,-1,3,4};
+    int numbers[END] = {0,1,2,3,4};
     int count = 0;
     printf("Array of numbers: \n");
     while (count<END){
@@ -128,6 +161,8 @@ void main(){
     // printList(&head);
     // removeNodeValue(&head);
     // printList(&head);
-    removeNegatives(&head);
+    // removeNegatives(&head);
+    // printList(&head);
+    addNodeIndex(&head);
     printList(&head);
 }
