@@ -8,6 +8,26 @@ typedef struct node{
     struct node *next;
 }node_t;
 
+void createLinkedList(int numbers[], node_t **headRef){
+    int count;
+    node_t *current = *headRef;
+
+    for (count = 0; count<END; count++){
+        node_t *newNode = (node_t *) malloc(sizeof(node_t));
+        newNode->data = numbers[count];
+        newNode->next = NULL;
+
+        if (*headRef == NULL){
+            *headRef = newNode;
+            current = *headRef;
+        } else {
+            current->next = newNode;
+            current = newNode;
+        }
+    }
+    current = *headRef;
+}
+
 void printList(node_t **headRef){
     node_t *current = *headRef;
 
@@ -90,6 +110,12 @@ void removeNegatives(node_t **headRef){
     }
 }
 
+void removeFirst(node_t **headRef){
+    node_t *current = *headRef;
+    current = current->next;
+    *headRef = current;
+}
+
 void addNodeIndex(node_t **headRef){
     int index, input, value = 0;
     do {
@@ -146,26 +172,6 @@ void addNodeTail(node_t **headRef){
     current->next = newNode;
 }
 
-void createLinkedList(int numbers[], node_t **headRef){
-    int count;
-    node_t *current = *headRef;
-
-    for (count = 0; count<END; count++){
-        node_t *newNode = (node_t *) malloc(sizeof(node_t));
-        newNode->data = numbers[count];
-        newNode->next = NULL;
-
-        if (*headRef == NULL){
-            *headRef = newNode;
-            current = *headRef;
-        } else {
-            current->next = newNode;
-            current = newNode;
-        }
-    }
-    current = *headRef;
-}
-
 void main(){
     node_t *head = NULL;
 
@@ -188,6 +194,8 @@ void main(){
     // printList(&head);
     // addNodeIndex(&head);
     // printList(&head);
-    addNodeTail(&head);
+    // addNodeTail(&head);
+    // printList(&head);
+    removeFirst(&head);
     printList(&head);
 }
