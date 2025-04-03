@@ -50,7 +50,7 @@ void removeNode(node_t **headRef){
     free(temp);
 }
 
-void linkedList(int numbers[], node_t **headRef){
+void createLinkedList(int numbers[], node_t **headRef){
     int count;
     node_t *current = *headRef;
 
@@ -81,7 +81,7 @@ void main(){
         count++;
     }
 
-    linkedList(numbers, &head);
+    createLinkedList(numbers, &head);
     printList(&head);
     removeNode(&head);
     printList(&head);
