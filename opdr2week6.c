@@ -13,9 +13,10 @@ void printList(node_t **headRef){
 
     printf("Linked list: \n");
     while (current != NULL){
-        printf("%d\n", current->data);
+        printf("%d ", current->data);
         current = current->next;
     }
+    printf("\n");
 }
 
 void removeNodeIndex(node_t **headRef){
@@ -96,9 +97,10 @@ void main(){
     int count = 0;
     printf("Array of numbers: \n");
     while (count<END){
-        printf("%d\n", numbers[count]);
+        printf("%d ", numbers[count]);
         count++;
     }
+    printf("\n");
 
     createLinkedList(numbers, &head);
     printList(&head);
