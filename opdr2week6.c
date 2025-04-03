@@ -51,7 +51,7 @@ void removeNodeIndex(node_t **headRef){
 }
 
 void removeNodeValue(node_t **headRef){
-    int input, value=0;
+    int value=0;
     if (*headRef != NULL && (*headRef)->data < value){
         node_t *temp = *headRef;
         *headRef = (*headRef)->next;
@@ -67,6 +67,26 @@ void removeNodeValue(node_t **headRef){
         printf("deleted value: %d\n", temp->data);
         current->next = temp->next;
         free(temp);
+    }
+}
+
+void removeNegatives(node_t **headRef){
+    int value=0;
+    while (*headRef != NULL && (*headRef)->data < value){
+        node_t *temp = *headRef;
+        *headRef = (*headRef)->next;
+        free(temp);
+    }
+    node_t *current = *headRef;
+    while (current != NULL && current->next != NULL){
+        if (current->next->data >= value){
+            current = current->next;
+        } else {
+            node_t *temp = current->next;
+            printf("deleted value: %d\n", temp->data);
+            current->next = temp->next;
+            free(temp);
+        }
     }
 }
 
@@ -93,7 +113,7 @@ void createLinkedList(int numbers[], node_t **headRef){
 void main(){
     node_t *head = NULL;
 
-    int numbers[END] = {0,-2,-1,3,4};
+    int numbers[END] = {-1,-2,-1,3,4};
     int count = 0;
     printf("Array of numbers: \n");
     while (count<END){
@@ -104,8 +124,10 @@ void main(){
 
     createLinkedList(numbers, &head);
     printList(&head);
-    removeNodeIndex(&head);
-    printList(&head);
-    removeNodeValue(&head);
+    // removeNodeIndex(&head);
+    // printList(&head);
+    // removeNodeValue(&head);
+    // printList(&head);
+    removeNegatives(&head);
     printList(&head);
 }
