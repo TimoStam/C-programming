@@ -112,7 +112,7 @@ void removeNegatives(node_t **headRef){
 
 void removeFirst(node_t **headRef){
     node_t *current = *headRef;
-    printf("fifo output: %d\n", current->data);
+    printf("head output: %d\n", current->data);
     current = current->next;
     *headRef = current;
 }
@@ -170,8 +170,17 @@ void addNodeTail(node_t **headRef){
     } while (input != 1);
     newNode->data = value;
     newNode->next = current->next;
-    printf("fifo input: %d\n", newNode->data);
+    printf("tail input: %d\n", newNode->data);
     current->next = newNode;
+}
+
+void addNodeHead(node_t **headRef){
+    int value = 0;
+    node_t *newNode = (node_t *) malloc (sizeof(node_t));
+    newNode->data = value;
+    newNode->next = *headRef;
+    printf("head input: %d\n", newNode->data);
+    *headRef = newNode;
 }
 
 void main(){
@@ -196,8 +205,11 @@ void main(){
     // printList(&head);
     // addNodeIndex(&head);
     // printList(&head);
-    addNodeTail(&head);
+    // addNodeTail(&head);
+    // printList(&head);
+    addNodeHead(&head);
     printList(&head);
     removeFirst(&head);
     printList(&head);
+
 }
