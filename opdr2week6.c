@@ -117,7 +117,30 @@ void addNodeIndex(node_t **headRef){
             while (getchar() != '\n');
         }
     } while (input != 1);
-    
+
+    newNode->data = value;
+    newNode->next = current->next;
+    current->next = newNode;
+}
+
+void addNodeTail(node_t **headRef){
+    int input, value = 0;
+    if (*headRef == NULL){
+        return;
+    }
+    node_t *current = *headRef;
+    while (current->next != NULL){
+        current = current->next;
+    }
+    node_t *newNode = (node_t *) malloc(sizeof(node_t));
+    do {
+        printf("New value: \n");
+        input = scanf_s("%d", &value);
+        if (input != 1){
+            printf("Try again\n");
+            while (getchar() != '\n');
+        }
+    } while (input != 1);
     newNode->data = value;
     newNode->next = current->next;
     current->next = newNode;
@@ -163,6 +186,8 @@ void main(){
     // printList(&head);
     // removeNegatives(&head);
     // printList(&head);
-    addNodeIndex(&head);
+    // addNodeIndex(&head);
+    // printList(&head);
+    addNodeTail(&head);
     printList(&head);
 }
