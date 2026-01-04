@@ -25,7 +25,7 @@ int compareECTS(const void *a, const void *b){
     }
     if (resultA->ECTS < resultB->ECTS){
         return -1;
-    }
+    } 
     return 0;
 }
 int compareFailed(const void *a, const void *b){
