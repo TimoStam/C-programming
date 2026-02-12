@@ -14,7 +14,7 @@ void changeCourse(Course* course[]){
     int input, index = 0;
     do {
         printf("What course do you want to change: ");
-        input = scanf_s("%d", &index);
+        input = scanf("%d", &index);
         if (input != 1 || index <-1 || index >=MAX_COURSES){
             printf("Try again\n");
             while (getchar() != '\n');
@@ -23,7 +23,7 @@ void changeCourse(Course* course[]){
     printf("%d\n", index);
 
     printf("What would the new course be: ");
-    scanf_s("%19s", course[index]->name, 20);
+    scanf("%19s", course[index]->name, 20);
 }
 
 void main (){
@@ -33,10 +33,15 @@ void main (){
     }
     int courseCount = 0;
     char courseName[20];
-    while (courseCount<MAX_COURSES && scanf_s("%19s", courses[courseCount]->name, 20) == 1){
+    printf("Enter course: ");
+
+    while (courseCount<MAX_COURSES && scanf("%19s", courses[courseCount]->name, 20) == 1){
         printf("Entered course: %19s\n", courses[courseCount]->name);
+        printf("Enter course: ");
+
         courseCount++;
     }
+    printf("\n");
     courseCount = 0;
     changeCourse(courses);
     while (courseCount<MAX_COURSES){
