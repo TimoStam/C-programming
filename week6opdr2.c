@@ -45,7 +45,7 @@ void removeNodeIndex(node_t **headRef){
     int input, index = 0;
     do {
         printf("What node do you want to remove: \n");
-        input = scanf_s("%d", &index);
+        input = scanf("%d", &index);
         if (input != 1 || index < 0 || index >= END){
             printf("Try again\n");
             while (getchar() != '\n');
@@ -121,7 +121,7 @@ void addNodeIndex(node_t **headRef){
     int index, input, value = 0;
     do {
         printf("Where do you want a new node (after index): \n");
-        input = scanf_s("%d", &index);
+        input = scanf("%d", &index);
         if (input != 1 || index < 0 || index >= END){
             printf("Try again\n");
             while (getchar() != '\n');
@@ -138,7 +138,7 @@ void addNodeIndex(node_t **headRef){
 
     do {
         printf("New value: \n");
-        input = scanf_s("%d", &value);
+        input = scanf("%d", &value);
         if (input != 1){
             printf("Try again\n");
             while (getchar() != '\n');
@@ -162,7 +162,7 @@ void addNodeTail(node_t **headRef){
     node_t *newNode = (node_t *) malloc(sizeof(node_t));
     do {
         printf("New value: \n");
-        input = scanf_s("%d", &value);
+        input = scanf("%d", &value);
         if (input != 1){
             printf("Try again\n");
             while (getchar() != '\n');
