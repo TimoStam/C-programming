@@ -21,8 +21,8 @@ void copyWithConversion(float data[], int size, float (*conversion)(float)){
 int main(){
     FILE *file1;
     FILE *file2;
-    file1 = fopen("C:\\Users\\timos\\Documents\\C programming\\fahrenheit.txt", "r");
-    file2 = fopen("C:\\Users\\timos\\Documents\\C programming\\voltage.txt", "r");
+    file1 = fopen("fahrenheit.txt", "r");
+    file2 = fopen("voltage.txt", "r");
     float fdata[MAX_VALUES];
     float vdata[MAX_VALUES];
     int count = 0;
