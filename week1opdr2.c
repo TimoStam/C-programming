@@ -13,7 +13,7 @@ int main(void) {
 	int guess[5] = { 0,0,0,0,0 };
 	int currentGuess;
 	for (int i = 0; i < (sizeof(guess) / sizeof(guess[0])); ++i) {
-		while (scanf_s("%d", &currentGuess) != 1) {
+		while (scanf("%d", &currentGuess) != 1) {
 			printf("ongeldige invoer");
 			clear_input_buffer();
 		}
@@ -47,12 +47,12 @@ static int grens(void) {
 	int ondergrens = 0;
 	int bovengrens = 0;
 	printf("Vul een ondergrens in: \n");
-	while (scanf_s("%d", &ondergrens) != 1) {
+	while (scanf("%d", &ondergrens) != 1) {
 		printf("ongeldige invoer");
 		clear_input_buffer();
 	}
 	printf("Vul een bovengrens in: \n");
-	while (scanf_s("%d", &bovengrens) != 1) {
+	while (scanf("%d", &bovengrens) != 1) {
 		printf("ongeldige invoer");
 		clear_input_buffer();
 	}

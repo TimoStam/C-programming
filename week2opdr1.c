@@ -10,7 +10,7 @@ void copyString(char *source, char *dest){
 }
 
 int main(){
-    char sourceArr[] = "Hello, World!";
+    char sourceArr[] = "Hello World!";
     char destArr[50];
     copyString(sourceArr, destArr);
     printf("%s\n", destArr);

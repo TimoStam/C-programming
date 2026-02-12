@@ -2,7 +2,7 @@
 #include <string.h>
 #define MAX_MATCHES 36
 typedef struct{
-    char isHome[5];
+    char isHome[6];
     int ownScore;
     int opponentScore;
     char opponent[10];
@@ -21,7 +21,7 @@ int main(){
     Result results;
     char name[10];
     int matchCount = 0;
-    file = fopen("C:\\Users\\timos\\Documents\\CP\\C-programming\\test.txt", "r");
+    file = fopen("test.txt", "r");
     if (file == NULL){
         printf("file didn't open\n");
     }
@@ -55,11 +55,11 @@ int main(){
     for (int i = 0; i< matchCount; i++){
         if (strcmp(matches[i].opponent, name) == 0){
             if (matches[i].ownScore > matches[i].opponentScore){
-                printf("Won against %s", matches[i].opponent);
+                printf("Won against %s\n", matches[i].opponent);
             } else if (matches[i].ownScore == matches[i].opponentScore){
-                printf("Tied against %s", matches[i].opponent);
+                printf("Tied against %s\n", matches[i].opponent);
             } else {
-                printf("Lost against %s", matches[i].opponent);
+                printf("Lost against %s\n", matches[i].opponent);
             }
         }
     }

@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 
+static void clear_input_buffer() {
+	while (getchar() != '\n');
+}
 
 static float avg(float grades[6]) {
 	float gradeSum = 0.0;
@@ -39,8 +41,14 @@ int main() {
 	for (int i = 0; i < (sizeof(grades) / sizeof(grades[0])); ++i) {
 		float grade=0.0;
 		printf("Enter grade %d: ", i+1);
-		scanf("%f", &grade);
-		grades[i] = grade;
+		int value = scanf("%f", &grade);
+		if (value == 1 && grade >= 0.0 && grade <= 10.0){
+			grades[i] = grade;
+		} else {
+			printf("incorrect value\n");
+			i--;
+		}
+		clear_input_buffer();
 	}	
 	float average = 0.0;
 	average = avg(grades);
@@ -50,7 +58,7 @@ int main() {
 	printf("There's %d grades that are too low.\n", low);
 	int low2 = 0;
 	low2 = lowGrade(grades);
-	if (low2 == 1) {
+	if (low2 > 1) {
 		printf("There are more than 1 grades that are lower than 4.0.\n");
 		passed = 0;
 	}

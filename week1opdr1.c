@@ -33,7 +33,7 @@ float calculate_income(float income){
 
 int main(void) {
 float income;
-if (scanf("%f", &income) != 1) {
+if (scanf_s("%f", &income) != 1) {
     printf("Ongeldige invoer\n");
 	return 1;
 }
