@@ -59,7 +59,7 @@ void checkSumSquares(int sudoku[SIZE][SIZE]){
 }
 
 int main (){
-    FILE *file = fopen("C:\\Users\\timos\\Documents\\CP\\C-programming\\sudoku.txt", "r");
+    FILE *file = fopen("sudoku.txt", "r");
     int sudoku[SIZE][SIZE];
     if(file == NULL) {
         printf("Not able to open the file.");
