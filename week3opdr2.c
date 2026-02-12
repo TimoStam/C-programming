@@ -41,13 +41,16 @@ void printHighest(int size, int* p1, int* p2){
 int main(){
     int lower, higher;
     int size = 0;
-    int *p1 = malloc(size * sizeof *p1);
-    int *p2 = malloc(size * sizeof *p2);
+
+    printf("Give the lowest, highest and size of the array\n");
+    scanf("%d %d %d", &lower, &higher, &size);
+    int *p1 = malloc(size * sizeof(int*));
+    int *p2 = malloc(size * sizeof(int*));
+
     if (p1 == NULL || p2 == NULL){
         printf("Incorrect memory allocation");
         return 1;
     }
-    scanf("%d %d %d", &lower, &higher, &size);
     generateArrays(lower, higher, size, p1, p2);
     printArray(size, p1, p2);
     printHighest(size, p1, p2);
