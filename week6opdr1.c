@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAX_COURSES 10
+#define MAX_COURSES 2
 
 typedef struct {
 	char name[20];

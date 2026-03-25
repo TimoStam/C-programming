@@ -1,16 +1,18 @@
 #include <stdio.h>
 
 void printArray(const double numberArr[], size_t size){
-    printf("{");
+    printf("[");
     for (int i =0; i < size-1; i++){
         printf("%.2f, ", numberArr[i]);
     }
-    printf("%.2f}\n", numberArr[size-1]);
+    printf("%.2f]\n", numberArr[size-1]);
 }
 
 
 int main(){
-    double numbers[] = {5.89, 6.20, -2.13};
-    // double numbers[] = {3.14};
-    printArray(numbers, (sizeof(numbers)/sizeof(numbers[0])));
+    double numbers1[] = {5.89, 6.20, -2.13};
+    double numbers2[] = {3.14};
+    printArray(numbers1, (sizeof(numbers1)/sizeof(numbers1[0])));
+    printArray(numbers2, (sizeof(numbers2)/sizeof(numbers2[0])));
+
 }

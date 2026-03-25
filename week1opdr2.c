@@ -37,7 +37,7 @@ int main(void) {
 	for (int j = 0; j < sizeof(guess) / sizeof(guess[0]); ++j){
 		printf("%d ", guess[j]);
 	}
-
+`
 	return 0;
 
 }

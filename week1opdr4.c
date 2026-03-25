@@ -30,7 +30,7 @@ int main(){
                             pins2[i] = temp;
                             temp = 0;
                             break;
-                    }
+                    }       
                 }
                 if (10 == turns){
 

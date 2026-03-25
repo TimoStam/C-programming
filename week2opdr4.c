@@ -25,11 +25,17 @@ int main(){
     if (file == NULL){
         printf("file didn't open\n");
     }
-    while(matchCount < MAX_MATCHES && fscanf(file, "%s %d - %d %s", 
+    while(matchCount < MAX_MATCHES){
+
+        int valid = fscanf(file, "%s %d - %d %s",
         matches[matchCount].isHome, 
         &matches[matchCount].ownScore, 
         &matches[matchCount].opponentScore, 
-        matches[matchCount].opponent) == 4){
+        matches[matchCount].opponent);
+        if (valid != 4){
+            break;
+        }
+
         printf("%s %d - %d %s \n", matches[matchCount].isHome, matches[matchCount].ownScore, matches[matchCount].opponentScore, matches[matchCount].opponent);
         matchCount++;
     }
