@@ -1,6 +1,9 @@
 #include <stdio.h>
 #define SIZE 9
 
+// Add return values for functions, ask for new sudoku file (do while)
+
+
 void fillSudoku(FILE *file, int sudoku[9][9]){
     for (int row =0; row<SIZE; row++){
         for (int col = 0; col<SIZE; col++){
